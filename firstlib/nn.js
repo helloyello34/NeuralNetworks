@@ -45,9 +45,23 @@ class NeuralNetwork{
         return output.toArray();
     }
 
-    train(inputs, answer) {
+    train(inputs, targets) {
         // e_h1 = w1 / w1 + w2 * E1
         // e_h2 = w2 / w1 + w2 * E2
+
+        let outputs = this.feedforward(inputs);
+
+        // Convert array to matrix object
+        outputs = Matrix.fromArray(outputs);
+        targets = Matrix.fromArray(targets);
+
+        // Calculate the error
+        // Error = TARGETS - OUTPUTS
+        let output_errors = Matrix.subtract(targets, outputs);
+        
+        // Calculate the hidden layer error
+        let weights_ho_t = Matrix.transpose(this.weights_ho);
+        let hidden_errors = Matrix.multiply(weights_ho_t, output_errors); // w11 * e1 + w21 * e2
     }
 
     

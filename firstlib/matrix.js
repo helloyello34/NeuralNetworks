@@ -71,6 +71,16 @@ class Matrix {
         return arr;
     }
 
+    static subtract(a, b) {
+        let result = new Matrix(a.rows, a.cols);
+        for (let i = 0; i < a.rows; i++ ) {
+            for (let j = 0; j < a.cols; j++) {
+                result.data[i][j] = a.data[i][j] - b.data[i][j]
+            }
+        }
+        return result;
+    }
+
     static multiply(a, b) {
         let result;
         if (b instanceof Matrix) {
@@ -103,11 +113,11 @@ class Matrix {
         return result;
     }
 
-    transpose() {
-        let result = new Matrix(this.cols, this.rows);
-        for (let i = 0; i < this.rows; i++) {
-            for (let j = 0; j < this.cols; j++) {
-                result.data[j][i] += this.data[i][j];
+    static transpose( matrix ) {
+        let result = new Matrix(matrix.cols, matrix.rows);
+        for (let i = 0; i < matrix.rows; i++) {
+            for (let j = 0; j < matrix.cols; j++) {
+                result.data[j][i] += matrix.data[i][j];
             }
         }
 
