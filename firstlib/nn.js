@@ -64,6 +64,12 @@ class NeuralNetwork{
         let hidden_errors = Matrix.multiply(weights_ho_t, output_errors); // w11 * e1 + w21 * e2
     }
 
+    /*
+    y = mx + b
+    dm = lr * x * error
+    db = lr * error
+    */
+
     
 
 }
